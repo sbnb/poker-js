@@ -62,6 +62,31 @@
             });
         });
 
+        describe('POKER.Hand.numOfAKind()', function () {
+            it('straight should have [1,1,1,1,1] as num of a kind', function () {
+                straight.numOfAKind().should.eql([1,1,1,1,1]);
+            });
+
+            it('tripAces should have [3,1,1] as num of a kind', function () {
+                tripAces.numOfAKind().should.eql([3,1,1]);
+            });
+
+            it('fullhouse should have [3,2] as num of a kind', function () {
+                hands.fullHouses[0].numOfAKind().should.eql([3,2]);
+            });
+
+            it('quads should have [4,1] as num of a kind', function () {
+                hands.quads[0].numOfAKind().should.eql([4,1]);
+            });
+
+            it('two pair should have [2,2,1] as num of a kind', function () {
+                hands.twoPairs[0].numOfAKind().should.eql([2,2,1]);
+            });
+
+            it('pair should have [2,1,1,1] as num of a kind', function () {
+                hands.pairs[0].numOfAKind().should.eql([2,1,1,1]);
+            });
+        });
     });
 
     // create object where key is hand type (e.g. 'trips'), and value is an
