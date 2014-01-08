@@ -87,6 +87,44 @@
                 hands.pairs[0].numOfAKind().should.eql([2,1,1,1]);
             });
         });
+
+        describe('recognise poker hands', function () {
+            it('should recognise straight flushes', function () {
+                allSameHandType(hands['straightFlushes'], hType.STRAIGHT_FLUSH);
+            });
+
+            it('should recognise quads', function () {
+                allSameHandType(hands['quads'], hType.QUADS);
+            });
+
+            it('should recognise fullHouses', function () {
+                allSameHandType(hands['fullHouses'], hType.FULL_HOUSE);
+            });
+
+            it('should recognise flushes', function () {
+                allSameHandType(hands['flushes'], hType.FLUSH);
+            });
+
+            it('should recognise straights', function () {
+                allSameHandType(hands['straights'], hType.STRAIGHT);
+            });
+
+            it('should recognise trips', function () {
+                allSameHandType(hands['trips'], hType.TRIPS);
+            });
+
+            it('should recognise two pairs', function () {
+                allSameHandType(hands['twoPairs'], hType.TWO_PAIR);
+            });
+
+            it('should recognise pairs', function () {
+                allSameHandType(hands['pairs'], hType.PAIR);
+            });
+
+            it('should recognise high cards', function () {
+                allSameHandType(hands['highCards'], hType.HIGH_CARD);
+            });
+        });
     });
 
     // create object where key is hand type (e.g. 'trips'), and value is an
