@@ -125,6 +125,58 @@
                 allSameHandType(hands['highCards'], hType.HIGH_CARD);
             });
         });
+
+        describe('get hand values', function () {
+            it('straight flush should have value [STRAIGHT_FLUSH,5,4,3,2,1]', function () {
+                // 'As 2s 3s 4s 5s'
+                hands['straightFlushes'][0].getHandValue().should.eql([hType.STRAIGHT_FLUSH,5,4,3,2,1]);
+            });
+
+            it('quads should have value [QUADS,2,14]', function () {
+                // '2s 2d 2h 2c Ac'
+                hands['quads'][0].getHandValue().should.eql([hType.QUADS,2,14]);
+            });
+
+            it('fullhouse should have value [FULL_HOUSE,14,13]', function () {
+                // 'As Ah Ad Ks Kc'
+                hands['fullHouses'][0].getHandValue().should.eql([hType.FULL_HOUSE,14,13]);
+            });
+
+            it('flush should have value [FLUSH,14,13,7,6,3]', function () {
+                // '7s 6s As Ks 3s'
+                flush.getHandValue().should.eql([hType.FLUSH,14,13,7,6,3]);
+            });
+
+            it('straight should have value [STRAIGHT,7,6,5,4,3]', function () {
+                // '7s 6s 4c 3h 5s'
+                straight.getHandValue().should.eql([hType.STRAIGHT,7,6,5,4,3]);
+            });
+
+            it('low straight should have value [STRAIGHT,5,4,3,2,1]', function () {
+                // 'As 2s 4c 3h 5s'
+                lowStraight.getHandValue().should.eql([hType.STRAIGHT,5,4,3,2,1]);
+            });
+
+            it('trip aces should have value [TRIPS,14,13,3]', function () {
+                // 'As Ah Ad Ks 3c'
+                tripAces.getHandValue().should.eql([hType.TRIPS,14,13,3]);
+            });
+
+            it('two pair should have value [TWO_PAIR,10,2,11]', function () {
+                // '2s 2c Ts Td Jh'
+                hands['twoPairs'][0].getHandValue().should.eql([hType.TWO_PAIR,10,2,11]);
+            });
+
+            it('pair should have value [PAIR,14,7,4,3]', function () {
+                // 'As Ad 7c 3s 4d'
+                hands['pairs'][0].getHandValue().should.eql([hType.PAIR,14,7,4,3]);
+            });
+
+            it('high card should have value [HIGH_CARD,14,12,9,4,2]', function () {
+                // 'Ad Qh 9s 4c 2h'
+                hands['highCards'][0].getHandValue().should.eql([hType.HIGH_CARD,14,12,9,4,2]);
+            });
+        });
     });
 
     // create object where key is hand type (e.g. 'trips'), and value is an
