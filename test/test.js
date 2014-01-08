@@ -177,6 +177,18 @@
                 hands['highCards'][0].getHandValue().should.eql([hType.HIGH_CARD,14,12,9,4,2]);
             });
         });
+
+        describe('POKER.Hand.getRankByOccurance()', function () {
+            it('straights have 5 distinct cards', function () {
+                // '7s 6s 4c 3h 5s'
+                straight.getRankByOccurance(1).should.eql([7,6,5,4,3]);
+            });
+
+            it('two pairs have 2 ranks occurring twice each', function () {
+                // '2s 2c Ts Td Jh'
+                hands['twoPairs'][0].getRankByOccurance(2).should.eql([10, 2]);
+            });
+        });
     });
 
     // create object where key is hand type (e.g. 'trips'), and value is an
