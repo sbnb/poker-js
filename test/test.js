@@ -211,6 +211,45 @@
                 hands['twoPairs'][0].getRankByOccurance(2).should.eql([10, 2]);
             });
         });
+
+        describe('POKER.Deck', function () {
+            var deck;
+
+            beforeEach(function() {
+                deck = new POKER.Deck();
+            });
+
+            it('should be a full deck after creation', function () {
+                deck.size().should.equal(52);
+            });
+
+            it('should deal cards on request', function () {
+                var cards = deck.deal(5);
+                deck.size().should.equal(47);
+                cards.length.should.equal(5);
+            });
+
+            it('should deal only as many cards as in deck', function () {
+                var cards = deck.deal(100);
+                deck.size().should.equal(0);
+                cards.length.should.equal(52);
+            });
+
+            it('should shuffle cards on request', function () {
+                var preShuffle = deck.toString();
+                deck.shuffle();
+                var postShuffle = deck.toString();
+                preShuffle.should.not.equal(postShuffle);
+            });
+
+            it('shuffled deck should be full again', function () {
+                deck.deal(10);
+                deck.shuffle();
+                deck.size().should.equal(52);
+            });
+        });
+
+
     });
 
     // create object where key is hand type (e.g. 'trips'), and value is an
