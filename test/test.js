@@ -27,6 +27,28 @@
     });
 
     describe('Testing POKER module', function () {
+        describe('POKER.getWinners()', function () {
+            it('flush beats a straight', function () {
+                var winner = POKER.getWinners([flush, straight]);
+                winner.length.should.equal(1);
+                winner[0].should.equal(flush);
+            });
+
+            it('quads is best hand', function () {
+                var winner = POKER.getWinners([flush, straight, hands.quads[0]]);
+                winner.length.should.equal(1);
+                winner[0].should.equal(hands.quads[0]);
+            });
+
+            it('split winners', function () {
+                var winner = POKER.getWinners([flush, straight, flush]);
+                winner.length.should.equal(2);
+                winner[0].should.equal(flush);
+                winner[1].should.equal(flush);
+            });
+
+        });
+
         describe('POKER.Hand.numSameSuits()', function () {
             it('trip aces should have two same suits', function () {
                 tripAces.numSameSuits().should.equal(2);
