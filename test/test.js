@@ -47,6 +47,15 @@
                 winner[1].should.equal(flush);
             });
 
+            it('three nines should beat three sevens', function () {
+                var nines = POKER.handFromString('9c 9d 9s 4d 2h'),
+                    sevens = POKER.handFromString('7s 7d 7h Kc 5h'),
+                    winner = POKER.getWinners([nines, sevens]);
+                winner.length.should.equal(1, 'expect one winner');
+                winner[0].should.equal(nines);
+
+            });
+
         });
 
         describe('POKER.Hand.numSameSuits()', function () {
