@@ -1,4 +1,4 @@
-Poker library
+poker-js
 =============
 
 A convenience library for writing poker related programs, written in JavaScript.
